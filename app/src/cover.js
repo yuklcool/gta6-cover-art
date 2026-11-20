@@ -64,8 +64,10 @@ function drawSkyline(ctx, x, baseY, w, h, color, lit) {
     cx += bw + w * 0.012;
   }
   ctx.fillStyle = lit;
+  // Windows scale with the cover so they read at every post size.
+  const win = Math.max(2, w * 0.002);
   for (let i = 0; i < 26; i++) {
-    ctx.fillRect(x + rnd() * w, baseY - rnd() * h * 0.8, 3, 4);
+    ctx.fillRect(x + rnd() * w, baseY - rnd() * h * 0.8, win, win * 1.3);
   }
 }
 
