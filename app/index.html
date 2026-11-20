@@ -4,65 +4,72 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vice Nights — GTA-style cover maker</title>
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./theme.css">
 </head>
 <body>
-<main class="app">
-  <section class="controls">
-    <h1>VICE <em>NIGHTS</em></h1>
-    <p class="tag">Turn any photo into a GTA-style cover. Offline — your photos never leave this machine.</p>
+<div class="shell">
+  <div class="panel">
+    <h1 class="brand">VICE <b>NIGHTS</b></h1>
+    <p class="lede">Turn any photo into a GTA-style cover. Fully offline — your photos never leave this machine.</p>
 
-    <section>
+    <section class="card" aria-label="Photos">
       <h2>1 · Photos</h2>
-      <div class="slot">
-        <div class="slot-head"><span>Hero panel</span><button id="pick-hero" type="button">Select</button></div>
-        <input id="file-hero" type="file" accept="image/*">
-        <div class="row"><button id="sample-hero" type="button">Use sample</button><button id="fill-hero" type="button">Fill all panels</button></div>
+      <div class="photocard">
+        <header><span>Main panel</span><button id="choose-main" type="button">Select</button></header>
+        <input id="file-main" type="file" accept="image/*">
+        <div class="actions"><button id="sample-main" type="button">Use sample</button><button id="fill-main" type="button">Fill all panels</button></div>
       </div>
-      <div class="slot">
-        <div class="slot-head"><span>Panel A</span><button id="pick-a" type="button">Select</button></div>
-        <input id="file-a" type="file" accept="image/*">
-        <div class="row"><button id="sample-a" type="button">Use sample</button><button id="fill-a" type="button">Fill all panels</button></div>
+      <div class="photocard">
+        <header><span>Left panel</span><button id="choose-left" type="button">Select</button></header>
+        <input id="file-left" type="file" accept="image/*">
+        <div class="actions"><button id="sample-left" type="button">Use sample</button><button id="fill-left" type="button">Fill all panels</button></div>
       </div>
-      <div class="slot">
-        <div class="slot-head"><span>Panel B</span><button id="pick-b" type="button">Select</button></div>
-        <input id="file-b" type="file" accept="image/*">
-        <div class="row"><button id="sample-b" type="button">Use sample</button><button id="fill-b" type="button">Fill all panels</button></div>
+      <div class="photocard">
+        <header><span>Right panel</span><button id="choose-right" type="button">Select</button></header>
+        <input id="file-right" type="file" accept="image/*">
+        <div class="actions"><button id="sample-right" type="button">Use sample</button><button id="fill-right" type="button">Fill all panels</button></div>
       </div>
-      <div class="zoom-row">
-        <label style="flex:1">Zoom · <span id="panel-name">Hero panel</span>
+      <div class="zoomline">
+        <label>Zoom · <span id="zoom-panel">Main panel</span>
           <input id="zoom" type="range" min="0.8" max="2.5" step="0.05" value="1">
         </label>
-        <span id="zoom-value">100%</span>
+        <output id="zoom-out">100%</output>
       </div>
-      <p style="margin:8px 0 0;color:#b9a8cc;font-size:13px">Tip: drag a photo on the cover to move it inside its panel.</p>
+      <p class="hint">Tip: drag a photo on the cover to move it inside its panel.</p>
     </section>
 
-    <section>
+    <section class="card" aria-label="Words">
       <h2>2 · Words</h2>
-      <label>Caption <input id="caption" type="text" maxlength="48" value="Sunset Heist"></label>
-      <label style="margin-top:10px">Tag line <input id="sub" type="text" maxlength="60" value="Vice City · 2026"></label>
+      <label class="field">Headline <input id="headline" type="text" maxlength="48" value="Sunset Heist"></label>
+      <label class="field">Tag line <input id="tagline" type="text" maxlength="60" value="Vice City · 2026"></label>
     </section>
 
-    <section>
+    <section class="card" aria-label="Look">
       <h2>3 · Look</h2>
-      <div id="grades"></div>
+      <div id="looks" class="choices"></div>
     </section>
 
-    <section>
-      <h2>4 · Size</h2>
-      <div id="sizes"></div>
+    <section class="card" aria-label="Decorations">
+      <h2>4 · Decorations</h2>
+      <div id="stickers" class="choices"></div>
+      <div id="frames" class="choices wide" style="margin-top:8px"></div>
     </section>
 
-    <button id="export" class="primary" type="button">Export PNG</button>
-    <p id="status" role="status"></p>
-  </section>
+    <section class="card" aria-label="Size">
+      <h2>5 · Size</h2>
+      <div id="sizes" class="choices wide"></div>
+      <div style="margin-top:8px"><button id="flip" type="button">Flip layout</button></div>
+    </section>
 
-  <section class="stage">
-    <canvas id="cover" width="1920" height="1080" aria-label="The cover preview"></canvas>
+    <button id="save" class="save" type="button">Export PNG</button>
+    <p id="note" class="note" role="status"></p>
+  </div>
+
+  <div class="view">
+    <canvas id="poster" width="1920" height="1080" aria-label="The cover preview"></canvas>
     <p>Live preview — what you see is what the PNG will be.</p>
-  </section>
-</main>
-<script type="module" src="./src/editor.js"></script>
+  </div>
+</div>
+<script type="module" src="./src/app.js"></script>
 </body>
 </html>

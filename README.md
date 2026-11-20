@@ -11,15 +11,19 @@ multi-panel poster look with bold caption lettering and a Vice City sunset
 or neon colour grade — and exports it as a PNG to share.
 
 - **Any photo:** upload your own photos, or use the two built-in samples.
-  Each of the three panels (hero + two) takes its own photo, with drag to
-  pan and a slider to zoom; one photo can fill all three panels.
-- **Fast and easy:** photo → caption → grade → size → PNG, in the common
-  post sizes 1080 × 1080, 1080 × 1350 and 1920 × 1080.
+  Each of the three panels (main + left + right) takes its own photo, with
+  drag to pan and a slider to zoom; one photo can fill all three panels.
+- **Decorations:** pick a sticker (starburst, palm badge, sun badge) and a
+  frame (white, neon glow, thin dark), and flip the layout so the main
+  panel swaps sides.
+- **Fast and easy:** photo → words → look → decor → size → PNG, in the
+  common post sizes 1080 × 1080, 1080 × 1350 and 1920 × 1080.
 - **Offline:** static files under `app/`, no build step, no network
   request. Photos are read on your own machine and never uploaded.
 - **Original art:** every visual is drawn in code (gradients, palm and
-  skyline silhouettes, halftone, synthwave sun). No Rockstar logo,
-  wordmark, artwork or font file — the lettering is a system font stack.
+  skyline silhouettes, halftone, synthwave sun, stickers). No Rockstar
+  logo, wordmark, artwork or font file — the lettering is a system font
+  stack.
 
 ## Run it
 
@@ -30,12 +34,14 @@ node serve.ts   # app/ on http://localhost:8080
 ## Layout
 
 - `app/index.html` — page shell and controls
-- `app/style.css` — editor styling
-- `app/src/editor.js` — UI wiring: uploads, drag-to-pan, zoom, export
-- `app/src/cover.js` — the canvas cover renderer
-- `app/src/panels.js` — panel layouts per post size and photo fitting
-- `app/src/grades.js` — sunset / neon / vice / noir colour grades
-- `app/src/shots.js` — fixed scenes for screenshots (`?shot=`)
+- `app/theme.css` — editor styling
+- `app/src/app.js` — UI wiring: uploads, drag-to-pan, zoom, export
+- `app/src/art.js` — the canvas cover renderer
+- `app/src/layout.js` — panel geometry per post size and photo fitting
+- `app/src/looks.js` — sunset / neon / lagoon / mono colour looks
+- `app/src/decor.js` — stickers and panel frames
+- `app/src/stage.js` — fixed scenes for screenshots (`?shot=`)
+- `app/src/state.js` — the editor state
 - `app/samples/` — two sample photos, made for make.fun with an image
   model and free to use
 - `main.ts` — hands the app and screenshots in (writes `dossier.json`)
